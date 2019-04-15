@@ -22,12 +22,12 @@ if (!$db) {
 echo "Connected" . PHP_EOL;
 
 // fetch focalpoint assets
-if( $fp_records = mysqli_query($db, "SELECT assetId, focusX, focusY FROM ". $fp_table_name)) {
+if( $fp_records = mysqli_query($db, "SELECT assetId, focusX, focusY FROM ". $db_prefix.$fp_table_name)) {
   printf("Select returned %d rows.\n", mysqli_num_rows($fp_records));
   while($row = mysqli_fetch_assoc($fp_records)){
     $craftformatted_point = formatX($row['focusX']).";".formatY($row['focusY']);
     $assetID = $row['assetId'];
-    if(mysqli_query($db, "UPDATE ".$asset_table_name." SET focalPoint = '".$craftformatted_point."' WHERE id = ".$assetID)){
+    if(mysqli_query($db, "UPDATE ".$db_prefix.$asset_table_name." SET focalPoint = '".$craftformatted_point."' WHERE id = ".$assetID)){
       printf("Updated asset: %s to %s\n", $assetID, $craftformatted_point);
     } else {
       echo "Error updating record: " . mysqli_error($db) ."\n";
