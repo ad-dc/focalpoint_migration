@@ -13,7 +13,7 @@ In Craft-FocusPoint focal point data can be set per field. Craft 3's focal point
 - Clone this repository
 - cp settings.example.php settings.php
 - fill in the relevant details
-- run the script via the command line `php migration.php` and you should see:
+- run the script via the command line `php migrate.php` and you should see:
 
 ```
 Connected
